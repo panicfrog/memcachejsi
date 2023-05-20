@@ -51,6 +51,15 @@ export default function App() {
     console.log(`getJson: \n         result: ${MemCache.getJson('jsonKey')}`);
     console.log(`-------------------------------------------------------------------------------`);
     setResult(MemCache.jsimultiply(9, 9));
+
+    let putStrings = MemCache.putStrings([{ key: 'putStringskey1', value: 'value1' }, { key: 'putStringskey2', value: 'value2' }]);
+    console.log(`putStrings: \n         result: ${putStrings}`);
+    let putInts = MemCache.putInts([{ key: 'putIntskey1', value: 1 }, { key: 'putIntskey2', value: 2 }]);
+    console.log(`putInts: \n         result: ${putInts}`);
+    let putDoubles = MemCache.putDoubles([{ key: 'putDoubleskey1', value: 1.1 }, { key: 'putDoubleskey2', value: 2.2 }]);
+    console.log(`putDoubles: \n         result: ${putDoubles}`);
+    let putBooleans = MemCache.putBooleans([{key: 'putBooleanskey1', value: true}, {key: 'putBooleanskey2', value: false}]);
+    console.log(`putBooleans: \n         result: ${putBooleans}`);
   }, []);
 
   return (

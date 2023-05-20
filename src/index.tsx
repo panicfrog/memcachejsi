@@ -11,6 +11,10 @@ declare interface Global {
     putInt: (key: string, value: number) => boolean;
     putDouble: (key: string, value: number) => boolean;
     putBoolean: (key: string, value: boolean) => boolean;
+    putStrings: (pairs: Array<{key: string, value: string}>) => boolean;
+    putInts: (pairs: Array<{key: string, value: number}>) => boolean;
+    putDoubles: (pairs: Array<{key: string, value: number}>) => boolean;
+    putBooleans: (pairs: Array<{key: string, value: boolean}>) => boolean;
     getJson: (key: string) => string | undefined;
     putJson: (key: string, value: string) => boolean;
     modifyJson: (key: string, path: string, value: string) => boolean;
