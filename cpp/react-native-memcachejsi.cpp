@@ -30,6 +30,8 @@ void setup_jsimultiply(facebook::jsi::Runtime& jsiRuntime,
   obj.setProperty(jsiRuntime, name, std::move(jsimutilply));
 }
 
+using namespace memcache;
+
 #define STRINGIZE_DETAIL(x) #x
 #define STRINGIZE(x) STRINGIZE_DETAIL(x)
 
