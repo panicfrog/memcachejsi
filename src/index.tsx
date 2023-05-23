@@ -19,6 +19,8 @@ declare interface Global {
     putJson: (key: string, value: string) => boolean;
     modifyJson: (key: string, path: string, value: string) => boolean;
     patchJson: (key: string, value: string) => boolean;
+    deleteValue: (key: string) => boolean;
+    deleteJson: (key: string) => boolean;
   }
   
 }

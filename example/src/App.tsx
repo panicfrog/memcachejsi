@@ -18,7 +18,9 @@ export default function App() {
 
     let putInt = MemCache.putInt('intKey', 123);
     let getInt = MemCache.getInt('intKey');
-    console.log(`int: \n         result: ${putInt}, getInt: ${getInt}`);
+    let deleteInt = MemCache.deleteValue('intKey');
+    let getIntAfterDelete = MemCache.getInt('intKey');
+    console.log(`int: \n         result: ${putInt}, getInt: ${getInt} deleteInt: ${deleteInt} getIntAfterDelte: ${getIntAfterDelete}\n`);
 
     let putDouble = MemCache.putDouble('doubleKey', 123.456);
     let getDouble = MemCache.getDouble('doubleKey');

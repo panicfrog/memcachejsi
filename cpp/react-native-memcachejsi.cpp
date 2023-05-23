@@ -182,6 +182,17 @@ void setup_put_bool(Runtime& jsiRuntime,
   SET_PROPERTY(jsiRuntime, name, impl, obj, 2)
 }
 
+void setup_delete_value(Runtime& jsiRuntime,
+                        Object& obj,
+                        const char *name) {
+  auto impl = [](Runtime& runtime, const Value& thisValue, const Value* arguments, size_t count) -> Value {
+    GET_KEY(count, arguments, runtime, key, deleteValue)
+    auto result = deleteValue(key);
+    return Value(result == 101);
+  };
+  SET_PROPERTY(jsiRuntime, name, impl, obj, 1)
+}
+
 void setup_put_ints(Runtime& jsiRuntime,
                     Object& obj,
                     const char *name) {
@@ -364,6 +375,17 @@ void setup_put_json(Runtime& jsiRuntime,
   SET_PROPERTY(jsiRuntime, name, impl, obj, 2)
 }
 
+void setup_delete_json(Runtime& jsiRuntime,
+                       Object& obj,
+                       const char *name) {
+  auto impl = [](Runtime& runtime, const Value& thisValue, const Value* arguments, size_t count) -> Value {
+    GET_KEY(count, arguments, runtime, key, deleteJson)
+    auto result = deleteJson(key);
+    return Value(result == 101);
+  };
+  SET_PROPERTY(jsiRuntime, name, impl, obj, 1)
+}
+
 void setup_modify_json(Runtime& jsiRuntime,
                        Object& obj,
                        const char *name) {
@@ -427,6 +449,8 @@ void install(facebook::jsi::Runtime& runtime) {
   setup_put_json(runtime, obj, "putJson");
   setup_modify_json(runtime, obj, "modifyJson");
   setup_patch_json(runtime, obj, "patchJson");
+  setup_delete_value(runtime, obj, "deleteValue");
+  setup_delete_json(runtime, obj, "deleteJson");
   runtime.global().setProperty(runtime, "memcachejsi", std::move(obj));
 }
 }
